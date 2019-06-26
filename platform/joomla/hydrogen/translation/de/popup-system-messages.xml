@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="file" method="upgrade" version="3.0">
+    <name>Popup System Messages - Gantry Atom (Hydrogen)</name>
+    <version>1.0.0</version>
+    <creationDate>27.06.2019</creationDate>
+    <author>Andreas Kar</author>
+    <authorEmail>andreas.kar@gmx.at</authorEmail>
+    <authorUrl>https://gantryprojects.com</authorUrl>
+    <copyright>© 2019 Andreas Kar</copyright>
+    <license>MIT - see LICENSE.pdf</license>
+    <description>
+        <![CDATA[<div class="alert alert-info" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h3>Popup System Messages - Atom for Gantry Framework</h3>
+        <span aria-hidden="true" class="icon-user"></span>&nbsp;<em>Andreas Kar (andreas.kar@gmx.at)</em>
+        <p><b>INFO</b>:&nbsp;Dieses Atom wurde für Gantry Hydrogen installiert.<br />Wenn Sie das Atom für ein anderes Gantry Template installieren möchten, dann müssen die Dateien wie folgt platziert werden:</p>
+        <ul><li><code>*.yaml</code> =&gt; <code>/templates/[TEMPLATE]/custom/particles</code></li><li><code>*.twig</code> =&gt; <code>/templates/[TEMPLATE]/custom/particles</code></li><li><code>*.js</code> =&gt; <code>/templates/[TEMPLATE]/custom/js</code></li><li><code>*.scss</code> =&gt; <code>/templates/[TEMPLATE]/custom/scss</code></li></ul>
+        <div>Repository: <a href="https://git.io/fjrNR" title="Github Repository" target="_blank">https://git.io/fjrNR</a></div>
+        <div>Website: <a href="https://gantryprojects.com" title="Gantry Projects Website" target="_blank">https://gantryprojects.com</a></div></div>]]>
+    </description>
+    <fileset>
+        <files folder="particles" target="templates/g5_hydrogen/custom/particles">
+            <filename>popup-system-messages.html.twig</filename>
+            <filename>popup-system-messages.yaml</filename>
+        </files>
+        <files folder="scss" target="templates/g5_hydrogen/custom/scss">
+            <filename>_popup-system-messages.scss</filename>
+        </files>
+        <files folder="js" target="templates/g5_hydrogen/custom/js">
+            <filename>popup-system-messages.js</filename>
+            <filename>popup-system-messages.min.js</filename>
+        </files>
+    </fileset>
+</extension>

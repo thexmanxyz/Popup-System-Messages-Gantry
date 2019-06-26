@@ -1,0 +1,104 @@
+#######################################################
+#                                                     #
+#   Popup System Messages - Atom for Gantry           #
+#                                                     #
+#   Purpose: This project is a modified version of    #
+#            the Popup System Messages Atom written   #
+#            by Mark Taylor. It contains various      #
+#            fixes and alters the behaviour of the    #
+#            System Messages Particle so that         #
+#            messages are displayed in a popup        #
+#            instead of showing them in the default   #
+#            container.                               #
+#                                                     #
+#   Author: Andreas Kar (thex) <andreas.kar@gmx.at>   #
+#   Repository: https://git.io/fjrNR                  #
+#   Homepage: https://gantryprojects.com              #
+#                                                     #
+#   -------------                                     #
+#   Orignal Atom:                                     #
+#   -------------                                     #
+#   Author: Mark Taylor a.k.a MrT @ RocketTheme       #
+#   Homepage: https://rockettheme.com/                #
+#                                                     #
+#######################################################
+
+name: Popup System Messages
+description: Zeigt Systemnachrichten als Popup an.
+type: atom
+icon: fa-exclamation-circle
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Aktiviert
+      description: Globale Aktivierung des Popup System Messages Atoms.
+      default: true
+    
+    info:
+      type: separator.note
+      class: alert alert-info
+      content: 'Dieses Atom verändert das Verhalten des <i>System Messages</i> Particles so, das die Nachrichten stattdessen in einem Popup angezeigt werden. Sie müssen das <i>System Messages</i> Particle wie bisher im Layout des Outlines hinzufügen.'
+
+    set_general:
+      type: container.set
+      label: Allgemein
+      fields:
+        cdn.base_url:
+          type: input.text
+          label: CDN Basis URL
+          description: Die Basis URL für den CDN Server.
+          placeholder: https://cdn.jsdelivr.net/gh/thexmanxyz/Popup-System-Messages-Gantry/src/js
+          default: https://cdn.jsdelivr.net/gh/thexmanxyz/Popup-System-Messages-Gantry/src/js
+
+        js.placement:
+          type: select.select
+          label: JS Platzierung
+          description: Platzierung des JS.
+          default: head
+          options:
+            head: Header
+            footer: Footer
+
+        js.priority:
+          type: input.text
+          label: JS Priorität
+          description: Die Priorität des JS.
+          placeholder: -10 ... 10
+          default: 0
+
+        js.info:
+          type: separator.note
+          class: alert alert-info
+          content: Bitte beachten Sie die Pfad und Standort Einstellungen. Für <code>Lokal</code> und <code>Global</code> geben Sie bitte ausschließlich den Dateinamen an.
+
+        js.option:
+          type: select.select
+          label: JS Datei Standort
+          description: Wählen Sie eine Option für die benutzerdefinierte JS Datei, statt dem standardmäßigen CDN.<br><br>Lokal (Template)<br><code>templates/G_TEMPLATE/custom/js</code><br><br>Global (Gantry)<br><code>media/gantry5/engines/nucleus/js</code><br><br>Benutzerdefiniert<br><code>jeder relative oder absolute Pfad</code>
+          default: disabled
+          options:
+              disabled: Deaktiviert (CDN)
+              local: Lokal (Template)
+              global: Global (Gantry)
+              custom: Benutzerdefiniert
+
+        js.path:
+          type: input.text
+          label: JS Pfad
+          description: Dateiname der JS Datei oder Pfad auf diesem Server (relativ zum Standort) bzw. auf einem anderen Server (absolut).
+          placeholder: Pfad/zum/JS oder Dateiname
+          default: popup-system-messages.min.js
+
+        js.execution:
+          type: select.select
+          label: JS Ausführung
+          description: Die verwendete Ausführungsmethode für das Laden der JS Datei.
+          placeholder: 'Auswählen...'
+          default: both
+          options:
+              none: Keine
+              async: Asynchron
+              defer: Verzögert
+              both: Beide

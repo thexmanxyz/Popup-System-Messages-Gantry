@@ -1,0 +1,84 @@
+{#######################################################}
+{#                                                     #}
+{#   Popup System Messages - Atom for Gantry           #}
+{#                                                     #}
+{#   Purpose: This project is a modified version of    #}
+{#            the Popup System Messages Atom written   #}
+{#            by Mark Taylor. It contains various      #}
+{#            fixes and alters the behaviour of the    #}
+{#            System Messages Particle so that         #}
+{#            messages are displayed in a popup        #}
+{#            instead of showing them in the default   #}
+{#            container.                               #}
+{#                                                     #}
+{#   Author: Andreas Kar (thex) <andreas.kar@gmx.at>   #}
+{#   Repository: https://git.io/fjrNR                  #}
+{#   Homepage: https://gantryprojects.com              #}
+{#                                                     #}
+{#   -------------                                     #}
+{#   Orignal Atom:                                     #}
+{#   -------------                                     #}
+{#   Author: Mark Taylor a.k.a MrT @ RocketTheme       #}
+{#   Homepage: https://rockettheme.com/                #}
+{#                                                     #}
+{#######################################################}
+
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set scriptType = 'text/javascript' %}
+
+{% set jsPlace = particle.js.placement|default('head') %}
+{% set jsExec = particle.js.execution|default("both") %}
+{% set jsExecAttr = _self.getJSExecution(jsExec) %}
+{% set jsPrior = particle.js.priority|default(0) %}
+
+{% set cdnRepo = particle.cdn.base_url|default('https://cdn.jsdelivr.net/gh/thexmanxyz/Popup-System-Messages-Gantry/src/js') %}
+{% set jsPath = _self.getResourceFilePath(particle.js, cdnRepo, 'popup-system-messages', 'js') %}
+
+{%- block particle -%}
+    {%- scripts in jsPlace with { priority: jsPrior } -%}
+        {%- do gantry.load('jquery') -%}
+        <script type="{{scriptType}}" src="{{url(jsPath)}}"{{jsExecAttr}}></script>
+    {%- endscripts -%}
+{%- endblock -%}
+
+{%- macro getResourceFilePath(element, cdnUrl, cdnFile, type) -%}
+    {%- set elPath = element.path|default(cdnFile ~ "." ~ type) -%}
+    {%- set elOpt = element.option|default("disabled") -%}
+    {%- set path = empty -%}
+    {%- if elOpt == 'local' or elOpt == 'global' -%}
+        {%- set hPath = elPath -%}
+        {%- if hPath is not empty and hPath|slice(0, 1)|lower == '/' -%}
+            {%- set hPath = hPath|slice(1, (hPath|length - 1)) -%}
+        {%- endif -%}
+        {%- set hPath = type ~ '/' ~ hPath -%}
+        {%- if elOpt == 'local' -%}
+            {%- set path = 'gantry-theme://' ~ hPath -%}
+        {%- else -%}
+            {%- set path = 'media/gantry5/engines/nucleus/' ~ hPath -%}
+        {%- endif -%}
+    {%- elseif elOpt == 'custom' -%}
+        {%- set path = elPath -%}
+    {%- endif -%}
+    {%- if path is empty -%}
+        {%- set path = cdnUrl ~ '/' ~ cdnFile ~ "." ~ type -%}
+    {%- endif -%}
+    {{- path|raw -}}
+{%- endmacro -%}
+
+{%- macro getJSExecution(type) -%}
+    {%- set attribute = '' -%}
+    {%- if type == 'defer' or type == 'both' -%}
+        {%- set attribute = 'defer="defer"' -%}
+    {%- endif -%}
+    {%- if type == 'both' -%}
+        {%- set attribute = attribute ~ ' ' -%}
+    {%- endif -%}
+    {%- if type == 'async' or type == 'both' -%}
+        {%- set attribute = attribute ~ 'async="async"' -%}
+    {%- endif -%}
+    {%- if type is not empty -%}
+        {%- set attribute = ' ' ~ attribute -%}
+    {%- endif -%}
+    {{- attribute|raw -}}
+{%- endmacro -%}

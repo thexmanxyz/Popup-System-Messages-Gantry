@@ -1,0 +1,68 @@
+/******************************************************
+*                                                     *
+*   Popup System Messages - Atom for Gantry           *
+*                                                     *
+*   Purpose: This project is a modified version of    *
+*            the Popup System Messages Atom written   *
+*            by Mark Taylor. It contains various      *
+*            fixes and alters the behaviour of the    *
+*            System Messages Particle so that         *
+*            messages are displayed in a popup        *
+*            instead of showing them in the default   *
+*            container.                               *
+*                                                     *
+*   Author: Andreas Kar (thex) <andreas.kar@gmx.at>   *
+*   Repository: https://git.io/fjrNR                  *
+*   Homepage: https://gantryprojects.com              *
+*                                                     *
+*   -------------                                     *
+*   Orignal Atom:                                     *
+*   -------------                                     *
+*   Author: Mark Taylor a.k.a MrT @ RocketTheme       *
+*   Homepage: https://rockettheme.com/                *
+*                                                     *
+******************************************************/
+
+body.messages-loaded-body{ overflow: hidden; }
+
+.g-system-messages {
+    display: none;
+}
+
+.g-system-messages.already-open{
+    display: inherit;
+}
+
+.g-system-messages.messages-loaded {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.75);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;  
+  
+  #system-message-container {
+    position: absolute;
+    left: 20vw;
+    right: 20vw;
+    top: 20vh;
+    bottom: 0;  
+    
+    .alert .close {
+      font-size: 3rem;
+      color: red;
+      opacity: 1;
+      text-shadow: none;
+      margin-top: -2.5rem;
+      margin-right: -2.5rem;
+    }
+      
+    .alert .close:hover {
+      opacity: 0.8;
+    } 
+  }
+  
+}

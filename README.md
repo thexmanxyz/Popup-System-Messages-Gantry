@@ -60,8 +60,9 @@ Please be aware that the template folder path varies in dependence of the used C
 3. Configure the appearance according to your favor.
 
 ## Supported Parameters and Atom Options
+* Replaces the default system messages with a popup
 * Full rework of the MrT Freebie Atom 
-  * Extensive rework and cleanup of JS code base
+  * Especially rework and cleanup of the JS code base
   * Encapsulated JS code within a component 
   * Consider that system messages might already be there on page load
   * Event handling encapsulated and improved

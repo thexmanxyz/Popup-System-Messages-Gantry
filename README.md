@@ -1,5 +1,5 @@
 # Popup System Messages - Atom for Gantry
-This project contains a Gantry Atom and is based on **Popup System Messages Atom** written by Mark Taylor but received a heavy rework and contains additional features as well as fixes. It alters the **System Messages Particle** default behaviour within the Gantry templating framework so that messages are displayed in a popup instead of showing them in the default container. Furthermore, **Popup System Messages** provides an easy, user friendly and GUI assisted configuration and integration. In the current revision the following CMSs are supported:
+This project contains a Gantry Atom and is based on **Popup System Messages** written by [Mark Taylor](https://rockettheme.com/forum/gantry5-for-joomla/278683-popupmessages-atom-freebie-by-mrt?limitstart=0) but received a heavy rework and contains additional features as well as fixes. It alters the **System Messages Particle** default behaviour within the Gantry templating framework so that messages are displayed in a popup instead of showing them in the default container. Furthermore, **Popup System Messages** provides an easy, user friendly and GUI assisted configuration and integration. In the current revision the following CMSs are supported:
 * Joomla
 * Wordpress
 * Grav

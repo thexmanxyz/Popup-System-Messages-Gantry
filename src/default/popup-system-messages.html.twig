@@ -35,6 +35,11 @@
 {% set cdnRepo = particle.cdn.base_url|default('https://cdn.jsdelivr.net/gh/thexmanxyz/Popup-System-Messages-Gantry@latest/src/js') %}
 {% set jsPath = _self.getResourceFilePath(particle.js, cdnRepo, 'popup-system-messages', 'js') %}
 
+
+{% block stylesheets %}
+    <style>.g-system-messages{display: none;}</style>
+{% endblock %}
+
 {%- block particle -%}
     {%- scripts in jsPlace with { priority: jsPrior } -%}
         {%- do gantry.load('jquery') -%}

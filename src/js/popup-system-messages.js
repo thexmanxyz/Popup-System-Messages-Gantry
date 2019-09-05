@@ -24,7 +24,7 @@
 ******************************************************/
 
 (function($){
-     jQuery(window).load(function() {
+     $(window).load(function() {
         var psm = new PopupSystemMessages();
         
         // initialize module events

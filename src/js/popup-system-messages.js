@@ -91,10 +91,11 @@ function PopupSystemMessages($){
     
     // close system modal
     this.closeModal = function(){
-        var $message = $(sysMessCntSel).closest(gSysMessCntSel);
+        var $message;
      
         //only remove CSS classes if popup message was the last one existing
-        if($(sysMessSel).length == 1){
+        if($(sysMessSel).length <= 1){
+            $message = $(sysMessCntSel).closest(gSysMessCntSel);
             $message.removeClass(modalLoadedCls);
             $('body').removeClass(modalLoadedCls);
         }

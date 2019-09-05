@@ -25,18 +25,12 @@
 
 (function($){
      $(window).load(function() {
-        var psm = new PopupSystemMessages();
-        
-        // initialize module events
-         psm.initialize($);
-         
-         // auto open if there is already a message
-         psm.autoOpen($);
+        var psm = new PopupSystemMessages($);
     });
 })(jQuery);
 
 
-function PopupSystemMessages(){
+function PopupSystemMessages($){
     
     // key for exit
     var escapeKey = '27';
@@ -53,39 +47,40 @@ function PopupSystemMessages(){
     var alrOpenCls = 'already-open';
     
     // initialize
-    this.initialize = function($){
-        this.addOpenModal($);
-        this.addCloseModal($);
-        this.addEscapeKeyListener($);      
+    this.initialize = function(){
+        this.addOpenModal();
+        this.addCloseModal();
+        this.addEscapeKeyListener();  
+        this.autoOpen();
     };
     
     
     // add open modal
-    this.addOpenModal = function($){
+    this.addOpenModal = function(){
         var that = this;
         
         // open if messages are added to system message container
-        $(sysMessCntSel).bind('DOMNodeInserted', function(){ that.openModal($); }); 
+        $(sysMessCntSel).bind('DOMNodeInserted', function(){ that.openModal(); }); 
         
     };
     
     // add close modal
-    this.addCloseModal = function($){
+    this.addCloseModal = function(){
         var that = this;
         
         // close if messages were cleared from system messages container
-        $(sysMessCntSel).bind('DOMNodeRemoved', function(){ that.closeModal($); });
+        $(sysMessCntSel).bind('DOMNodeRemoved', function(){ that.closeModal(); });
         
     }
     
     // listen for escape key presses
-    this.addEscapeKeyListener = function($){
-        $(document).on('keyup', this.getKeyUpHandling($));
+    this.addEscapeKeyListener = function(){
+        $(document).on('keyup', this.getKeyUpHandling());
         
     };
     
     // open system message modal
-    this.openModal = function($){
+    this.openModal = function(){
         var $message = $(sysMessCntSel).closest(gSysMessSel);
         
         $message.addClass(messModalCls);
@@ -95,7 +90,7 @@ function PopupSystemMessages(){
     };
     
     // close system modal
-    this.closeModal = function($){
+    this.closeModal = function(){
         var $message = $(sysMessCntSel).closest(gSysMessSel);
         
         $message.removeClass(messModalCls);
@@ -103,7 +98,7 @@ function PopupSystemMessages(){
     };
     
     // get key up handling
-    this.getKeyUpHandling = function($){
+    this.getKeyUpHandling = function(){
         return function(event) {
             
             // send a click to the modal close button, but only when it exists
@@ -114,11 +109,13 @@ function PopupSystemMessages(){
     };
     
     // if there are already messages visible on load, create modal instantly
-    this.autoOpen = function($){
+    this.autoOpen = function(){
         var $message = $(sysMessCntSel).closest(gSysMessSel);
         
         if($message.find(alertSel).length > 0)
-            this.openModal($);  
+            this.openModal();  
     };
+	
+    // initialize module events
+    this.initialize();
 }
- 

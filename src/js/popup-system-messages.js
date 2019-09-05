@@ -36,7 +36,7 @@ function PopupSystemMessages($){
     var escapeKey = '27';
     
     // define selector
-	var sysMessSel = '#system-message > div';
+    var sysMessSel = '#system-message > div';
     var sysMessCntSel = '#system-message-container';
     var gSysMessCntSel = '.g-system-messages';
     var closeSel = '.close';
@@ -93,11 +93,11 @@ function PopupSystemMessages($){
     this.closeModal = function(){
         var $message = $(sysMessCntSel).closest(gSysMessCntSel);
      
-		//only remove CSS classes if popup message was the last one existing
-		if($(sysMessSel).length == 1){
-			$message.removeClass(modalLoadedCls);
-			$('body').removeClass(modalLoadedCls);
-		}	
+        //only remove CSS classes if popup message was the last one existing
+        if($(sysMessSel).length == 1){
+            $message.removeClass(modalLoadedCls);
+            $('body').removeClass(modalLoadedCls);
+        }
     };
     
     // get key up handling
@@ -118,7 +118,7 @@ function PopupSystemMessages($){
         if($message.find(alertSel).length > 0)
             this.openModal();  
     };
-	
+    
     // initialize module events
     this.initialize();
 }

@@ -61,7 +61,7 @@ Please be aware that the template folder path varies in dependence of the used C
 
 ## Supported Parameters and Atom Options
 * Replaces the default system messages with a popup
-* Full rework of the MrT Freebie Atom 
+* Full rework of the [MrT Freebie Atom](https://rockettheme.com/forum/gantry5-for-joomla/278683-popupmessages-atom-freebie-by-mrt?limitstart=0) 
   * Especially rework and cleanup of the JS code base
   * Encapsulated JS code within a component 
   * Consider that system messages might already be there on page load

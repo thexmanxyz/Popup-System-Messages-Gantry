@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <extension type="file" method="upgrade" version="3.0">
     <name>Popup System Messages - Gantry Atom (Hydrogen)</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <creationDate>05.09.2019</creationDate>
     <author>Andreas Kar</author>
     <authorEmail>andreas.kar@gmx.at</authorEmail>

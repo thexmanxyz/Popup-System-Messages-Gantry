@@ -16,22 +16,25 @@
 *   Homepage: https://gantryprojects.com              *
 *                                                     *
 *   -------------                                     *
-*   Orignal Atom:                                     *
+*   Original Atom:                                    *
 *   -------------                                     *
 *   Author: Mark Taylor a.k.a MrT @ RocketTheme       *
 *   Homepage: https://rockettheme.com/                *
 *                                                     *
 ******************************************************/
 
- jQuery(window).load(function($) {
-    var psm = new PopupSystemMessages();
-    
-    // initialize module events
-     psm.initialize($);
-     
-     // auto open if there is already a message
-     psm.autoOpen($);
-});
+(function($){
+     jQuery(window).load(function() {
+        var psm = new PopupSystemMessages();
+        
+        // initialize module events
+         psm.initialize($);
+         
+         // auto open if there is already a message
+         psm.autoOpen($);
+    });
+})(jQuery);
+
 
 function PopupSystemMessages(){
     
@@ -59,17 +62,19 @@ function PopupSystemMessages(){
     
     // add open modal
     this.addOpenModal = function($){
+        var that = this;
         
         // open if messages are added to system message container
-        $(sysMessCntSel).bind('DOMNodeInserted', function(){ this.openModal($); }); 
+        $(sysMessCntSel).bind('DOMNodeInserted', function(){ that.openModal($); }); 
         
     };
     
     // add close modal
     this.addCloseModal = function($){
+        var that = this;
         
         // close if messages were cleared from system messages container
-        $(sysMessCntSel).bind('DOMNodeRemoved', function(){ this.closeModal($); });
+        $(sysMessCntSel).bind('DOMNodeRemoved', function(){ that.closeModal($); });
         
     }
     

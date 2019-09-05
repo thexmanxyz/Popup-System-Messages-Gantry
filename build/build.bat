@@ -18,7 +18,7 @@ REM #   Repository: https://git.io/fjrNR                  #
 REM #   Homepage: https://gantryprojects.com              #
 REM #                                                     #
 REM #   -------------                                     #
-REM #   Orignal Atom:                                     #
+REM #   Original Atom:                                    #
 REM #   -------------                                     #
 REM #   Author: Mark Taylor a.k.a MrT @ RocketTheme       #
 REM #   Homepage: https://rockettheme.com/                #

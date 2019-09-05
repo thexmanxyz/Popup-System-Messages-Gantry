@@ -23,13 +23,13 @@
 *                                                     *
 ******************************************************/
 
-body.messages-loaded-body{ overflow: hidden; }
+body.popup-loaded{ overflow: hidden; }
 
-.g-system-messages.already-open{
+.g-system-messages.popup-opened{
     display: inherit;
 }
 
-.g-system-messages.messages-loaded {
+.g-system-messages.popup-loaded {
   position: fixed;
   top: 0;
   bottom: 0;

@@ -36,15 +36,15 @@ function PopupSystemMessages($){
     var escapeKey = '27';
     
     // define selector
+	var sysMessSel = '#system-message > div';
     var sysMessCntSel = '#system-message-container';
-    var gSysMessSel = '.g-system-messages';
+    var gSysMessCntSel = '.g-system-messages';
     var closeSel = '.close';
     var alertSel = '.alert';
     
     // define classes
-    var messModalCls = 'messages-loaded';
-    var sysMessOpenCls = 'messages-loaded-body';   
-    var alrOpenCls = 'already-open';
+    var modalLoadedCls = 'popup-loaded';
+    var modalOpenCls = 'popup-opened';
     
     // initialize
     this.initialize = function(){
@@ -81,20 +81,23 @@ function PopupSystemMessages($){
     
     // open system message modal
     this.openModal = function(){
-        var $message = $(sysMessCntSel).closest(gSysMessSel);
+        var $message = $(sysMessCntSel).closest(gSysMessCntSel);
         
-        $message.addClass(messModalCls);
-        $message.addClass(alrOpenCls);
+        $message.addClass(modalLoadedCls);
+        $message.addClass(modalOpenCls);
         $message.find(closeSel).focus();
-        $('body').addClass(sysMessOpenCls);
+        $('body').addClass(modalLoadedCls);
     };
     
     // close system modal
     this.closeModal = function(){
-        var $message = $(sysMessCntSel).closest(gSysMessSel);
-        
-        $message.removeClass(messModalCls);
-        $('body').removeClass(sysMessOpenCls);
+        var $message = $(sysMessCntSel).closest(gSysMessCntSel);
+     
+		//only remove CSS classes if popup message was the last one existing
+		if($(sysMessSel).length == 1){
+			$message.removeClass(modalLoadedCls);
+			$('body').removeClass(modalLoadedCls);
+		}	
     };
     
     // get key up handling
@@ -102,7 +105,7 @@ function PopupSystemMessages($){
         return function(event) {
             
             // send a click to the modal close button, but only when it exists
-            if(event.keyCode == escapeKey && $(gSysMessSel + '.' + messModalCls).length > 0){
+            if(event.keyCode == escapeKey && $(gSysMessCntSel + '.' + modalLoadedCls).length > 0){
                 $(sysMessCntSel).find(alertSel + " " + closeSel).click();
             }
         }; 
@@ -110,7 +113,7 @@ function PopupSystemMessages($){
     
     // if there are already messages visible on load, create modal instantly
     this.autoOpen = function(){
-        var $message = $(sysMessCntSel).closest(gSysMessSel);
+        var $message = $(sysMessCntSel).closest(gSysMessCntSel);
         
         if($message.find(alertSel).length > 0)
             this.openModal();  

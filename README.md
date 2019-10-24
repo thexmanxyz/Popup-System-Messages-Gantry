@@ -104,4 +104,4 @@ Thanks to [N8Solutions](https://github.com/N8Solutions) for testing and providin
 Thanks to [Mark Taylor a.k.a MrT](https://github.com/marktaylor46) for providing the prototype of the Atom.
 
 ## by [thex](https://github.com/thexmanxyz) | [gantryprojects](https://gantryprojects.com)
-Copyright (c) 2019, free to use in personal and commercial software as per the [license](/LICENSE.md).
+Copyright (c) 2019, free to use in personal and commercial software as per the [license](/LICENSE).
